@@ -1,7 +1,7 @@
 {
   "name": "json-eval",
   "version": "0.0.0",
-  "description": "Evaluate stringfied JS object into JSON without eval()",
+  "description": "Evaluate a stringfied JS object into JSON without eval()",
   "main": "index.js",
   "dependencies": {
     "json5": "^0.5.0"
