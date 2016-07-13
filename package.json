@@ -1,6 +1,6 @@
 {
   "name": "json-eval",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Evaluate a stringfied JS object into JSON without eval()",
   "main": "index.js",
   "dependencies": {
