@@ -1,13 +1,10 @@
 'use strict';
 
-var JSON5 = require('json5');
-
 /**
- * This function converts JSON-like syntaxed strings to valid JSON. The correct
- * syntax for submission is that the string be eval()-able as a JS object. This
+ * This function converts JSON-like strings into valid JSON. The correct syntax
+ * for the submitted string is that it be eval()-able as a JS object. This
  * function will crawl through the submitted string and wrap the keys and values
- * in double-quotes as necessary. It requires JSON5 only to output more useful
- * error messaging than native JSON will output.
+ * in double-quotes as necessary.
  *
  * The steps on a high-level are as follows:
  *   * Further escape all escaped quotes and colons. Use the string
@@ -42,8 +39,8 @@ var JSON5 = require('json5');
  *     double-quotes will be wrapped in double-quotes without need for escape.
  *   * Return jsonString.
  *
- * @param {string} lString
- * @returns {string} jsonString
+ * @param {string} lString - a JS eval()-able JSON-like string.
+ * @return {string} stringified JSON.
  */
 function jsonEval(lString) {
   var colonPos = -1;
@@ -95,8 +92,8 @@ function jsonEval(lString) {
 
         // Unset quotePos.
         quotePos = -1;
-
-      } else if (colonPos > -1) {
+      }
+      else if (colonPos > -1) {
         keys.push(laxString.substring(0, colonPos).trim());
 
         // Truncate the beginning from laxString and look for a value.
@@ -107,7 +104,8 @@ function jsonEval(lString) {
 
       // If there are no more colons, and we're looking for a key, there is
       // probably a problem. Stop any further processing.
-      } else {
+      }
+      else {
         laxString = '';
         break;
       }
@@ -129,10 +127,10 @@ function jsonEval(lString) {
         // escaped those even further with their unicodes, it is safe to look
         // for wrapper pairs and conclude that their contents are values.
         case '"':
-          regex = /^"(.|\s)*?"/;
+          regex = /^"[\S\s]*?"/;
           break;
         case '\'':
-          regex = /^'(.|\s)*?'/;
+          regex = /^'[\S\s]*?'/;
           break;
 
         // If there is no value wrapper, regex for alphanumerics, decimal
@@ -154,7 +152,8 @@ function jsonEval(lString) {
 
     // If there are no more colons, and we're looking for a value, there is
     // probably a problem. stop any further processing.
-    } else {
+    }
+    else {
       laxString = '';
       break;
     }
@@ -172,7 +171,8 @@ function jsonEval(lString) {
       // Any enclosed double-quotes must be escaped.
       jsonString += keys[i].substring(1, keys[i].length - 1).replace(/"/g, '\\"');
       jsonString += '"';
-    } else {
+    }
+    else {
 
       // Open wrap with double-quotes if no wrapper.
       if (keys[i][0] !== '"' && keys[i][0] !== '\'') {
@@ -195,7 +195,7 @@ function jsonEval(lString) {
     }
 
     // Colon delimiter.
-    jsonString += ':'; + values[i];
+    jsonString += ':';
 
     // Values.
     // Replace single-quote wrappers with double-quotes.
@@ -207,7 +207,8 @@ function jsonEval(lString) {
       jsonString += '"';
 
     // For everything else, just add the value however it's wrapped.
-    } else {
+    }
+    else {
       jsonString += values[i];
     }
 
