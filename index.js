@@ -1,10 +1,12 @@
 'use strict';
 
 /**
- * This function converts JSON-like strings into valid JSON. The correct syntax
- * for the submitted string is that it be eval()-able as a JS object. This
- * function will crawl through the submitted string and wrap the keys and values
- * in double-quotes as necessary.
+ * This function converts JSON-like strings into valid JS objects. The correct
+ * syntax for the submitted string is that it be eval()-able as a JS object.
+ * However, this function does not actually run eval(), thereby averting the
+ * damage that executing insecure code can cause. This function will instead
+ * crawl through the submitted string and wrap the keys and values in double-
+ * quotes as necessary.
  *
  * The steps on a high-level are as follows:
  *   * Further escape all escaped quotes and colons. Use the string
@@ -40,12 +42,15 @@
  *   * Return jsonString.
  *
  * @param {string} lString - a JS eval()-able JSON-like string.
- * @return {string} stringified JSON.
+ * @return {object} JS object.
  */
 function jsonEval(lString) {
+  var JSON5 = require('JSON5');
+
   var colonPos = -1;
   var keys = [];
   var laxString = lString; // To not reassign param.
+  var jsObject;
   var jsonString;
   var quotePos = -1;
   var regex;
@@ -223,7 +228,14 @@ function jsonEval(lString) {
   jsonString = jsonString.replace(/\\u0027/g, '\'');
   jsonString = jsonString.replace(/\\u0058/g, ':');
 
-  return jsonString;
+  try {
+    jsObject = JSON5.parse(jsonString);
+  }
+  catch (err) {
+    console.error(err);
+  }
+
+  return jsObject;
 }
 
 module.exports = jsonEval;
