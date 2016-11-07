@@ -44,7 +44,7 @@
  * @param {string} lString - a JS eval()-able JSON-like string.
  * @return {object} JS object.
  */
-function jsonEval(lString) {
+module.exports = function (lString) {
   var JSON5 = require('JSON5');
 
   var colonPos = -1;
@@ -244,6 +244,4 @@ function jsonEval(lString) {
   }
 
   return jsObject;
-}
-
-module.exports = jsonEval;
+};
