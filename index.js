@@ -1,14 +1,10 @@
 'use strict';
 
 /**
- * This function converts JSON-like strings into valid JS objects. The correct
- * syntax for the submitted string is that it be eval()-able as a JS object.
- * However, this function does not actually run eval(), thereby averting the
- * damage that executing insecure code can cause. This function will instead
- * crawl through the submitted string and wrap the keys and values in double-
- * quotes as necessary.
- *
  * The steps on a high-level are as follows:
+ *   * First, try to parse the string with JSON5.
+ *   * If that fails, crawl through the submitted string, modifying the data in
+ *     the following manner:
  *   * Further escape all escaped quotes and colons. Use the string
  *     representation of their unicodes for this. This has the added bonus
  *     of being interpreted correctly by JSON5.parse() without further
