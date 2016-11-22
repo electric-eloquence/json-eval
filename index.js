@@ -37,7 +37,7 @@
  *     double-quotes will be wrapped in double-quotes without need for escape.
  *   * Return jsonString.
  *
- * @param {string} lString - a JS eval()-able JSON-like string.
+ * @param {string} lString - a JSON-like string.
  * @return {object} JS object.
  */
 module.exports = function (lString) {
