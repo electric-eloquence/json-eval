@@ -3,12 +3,15 @@
   "version": "0.1.4",
   "description": "Evaluate a stringfied JS object into JSON without eval()",
   "main": "index.js",
-  "dependencies": {
-    "json5": "^0.5.0"
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/electric-eloquence/json-eval.git"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": ">=4.0.0"
+  },
+  "dependencies": {
+    "json5": "^0.5.0"
+  }
 }
