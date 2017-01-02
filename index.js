@@ -41,7 +41,7 @@
  * @return {object} JS object.
  */
 module.exports = function (lString) {
-  var JSON5 = require('JSON5');
+  var JSON5 = require('json5');
 
   var colonPos = -1;
   var keys = [];
