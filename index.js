@@ -235,7 +235,7 @@ module.exports = function (lString) {
       jsObject = JSON5.parse(jsonString);
     }
     catch (err) {
-      console.error(err);
+      console.error('\n' + err.message);
     }
   }
 
