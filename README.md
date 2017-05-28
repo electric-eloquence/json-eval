@@ -10,7 +10,7 @@ escaping scheme employed by Pattern Lab for PHP. When encountering that syntax,
 it will crawl through the submitted string and wrap the keys and values in 
 double-quotes as necessary.
 
-Usage:
+### Use
 
 ```
 var jsonEval = require('json-eval');
