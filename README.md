@@ -13,6 +13,6 @@ double-quotes as necessary.
 ### Use
 
 ```
-var jsonEval = require('json-eval');
-var jsObject = jsonEval(jsonLikeString);
+const jsonEval = require('json-eval');
+const jsObject = jsonEval(jsonLikeString);
 ```
