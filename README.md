@@ -12,7 +12,7 @@ double-quotes as necessary.
 
 ### Use
 
-```
+```javascript
 const jsonEval = require('json-eval');
 const jsObject = jsonEval(jsonLikeString);
 ```
