@@ -8,6 +8,10 @@
     "url": "git+https://github.com/electric-eloquence/json-eval.git"
   },
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/electric-eloquence/json-eval/issues"
+  },
+  "homepage": "https://github.com/electric-eloquence/json-eval#readme",
   "engines": {
     "node": ">=0.10.0"
   },
