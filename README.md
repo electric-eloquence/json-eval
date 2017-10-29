@@ -11,7 +11,6 @@ it will crawl through the submitted string and wrap the keys and values in
 double-quotes as necessary.
 
 ### Use
-
 ```
 const jsonEval = require('json-eval');
 const jsObject = jsonEval(jsonLikeString);
