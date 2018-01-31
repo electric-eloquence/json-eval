@@ -3,8 +3,8 @@
 /**
  * The steps on a high-level are as follows:
  *   * First, try to parse the string with JSON5.
- *   * If that fails, crawl through the submitted string, modifying the data in
- *     the following manner:
+ *   * If that fails, traverse the submitted string, modifying the data in the
+ *     following manner:
  *   * Further escape all escaped quotes and colons. Use the string
  *     representation of their unicodes for this. This has the added bonus
  *     of being interpreted correctly by JSON5.parse() without further
@@ -13,7 +13,7 @@
  *     are either key/value wrappers or wrapped within those wrappers. We know
  *     that remaining commas and colons are either delimiters, or wrapped
  *     within quotes to not be recognized as such.
- *   * A do-while loop crawls laxString to write keys to a keys array and
+ *   * A do-while loop traverses laxString to write keys to a keys array and
  *     values to a values array.
  *   * Start by parsing the first key. Determine the type of wrapping quote,
  *     if any.
@@ -58,7 +58,7 @@ module.exports = function (lString) {
     jsObject = JSON5.parse(laxString);
   }
 
-  // Else, crawl through string to massage it into valid JSON5.
+  // Else, traverse string to massage it into valid JSON5.
   catch (err) {
     // Replace all escaped double-quotes with escaped unicode.
     laxString = laxString.replace(/\\"/g, '\\u0022');
@@ -69,7 +69,7 @@ module.exports = function (lString) {
     // Replace all escaped colons with escaped unicode.
     laxString = laxString.replace(/\\:/g, '\\u0058');
 
-    // With escaped chars out of the way, crawl through laxString looking for keys
+    // With escaped chars out of the way, traverse laxString looking for keys
     // and values.
     do {
 
