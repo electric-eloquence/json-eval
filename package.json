@@ -2,7 +2,12 @@
   "name": "json-eval",
   "version": "0.1.10",
   "description": "Evaluate a stringfied JS object into JSON without eval()",
-  "main": "index.js",
+  "main": "src/index.js",
+  "scripts": {
+    "bundle": "node run/bundle-client.js",
+    "lint": "eslint src",
+    "serve": "http-server ."
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/electric-eloquence/json-eval.git"
@@ -14,5 +19,11 @@
   "homepage": "https://github.com/electric-eloquence/json-eval#readme",
   "dependencies": {
     "json5": "^0.5.0"
+  },
+  "devDependencies": {
+    "browserify": "^14.4.0",
+    "eslint": "3.x",
+    "http-server": "^0.11.1",
+    "uglify-js": "^3.2.2"
   }
 }
