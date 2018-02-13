@@ -6,9 +6,9 @@
   "scripts": {
     "bundle": "node run/bundle-client.js",
     "devel": "npm run watch & npm run serve",
-    "lint": "eslint src",
-    "serve": "http-server .",
-    "watch": "nodemon --watch src -e js --exec 'npm run bundle'"
+    "lint": "npx eslint src",
+    "serve": "npx http-server .",
+    "watch": "npx nodemon --watch src -e js --exec 'npm run bundle'"
   },
   "repository": {
     "type": "git",
