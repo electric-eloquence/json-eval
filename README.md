@@ -21,7 +21,7 @@ const jsObject = jsonEval(jsonLikeString);
 
 Browser (ES5):
 
-```javascript
+```html
 <script src="json-eval/dist/json-eval.min.js"></script>
 <script>
   var jsonEval = window.jsonEval;
@@ -31,7 +31,7 @@ Browser (ES5):
 
 Browser (ES6):
 
-```javascript
+```html
 <script type="module">
   import jsonEval from 'json-eval/dist/json-eval.es6.min.js';
   const jsObject = jsonEval(jsonLikeString);

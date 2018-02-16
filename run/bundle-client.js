@@ -1,40 +1,28 @@
 'use strict';
 
-const {exec} = require('child_process');
+process.chdir(__dirname);
+
+const browserify = require('browserify');
 const fs = require('fs');
-const path = require('path');
+const uglifyES = require('uglify-es');
 
-const binPath = path.resolve('node_modules', '.bin');
-const src = 'src/index.js';
-const bld = 'dist/json-eval.min.js';
-const es6 = 'dist/json-eval.es6.min.js';
+const src = '../src/index.js';
+const bld = '../dist/json-eval.min.js';
+const es6 = '../dist/json-eval.es6.min.js';
 
-let cmd = `${binPath}/browserify ${src} | `;
-cmd += `${binPath}/uglifyjs -m -o ${bld}`;
-
-exec(cmd, (err, stdout, stderr) => {
-  fs.readFile(bld, (err1, data) => {
-    if (err1) {
-      console.error(err1);
+browserify(src)
+  .bundle((err, buf) => {
+    if (err) {
+      throw err;
     }
 
-    fs.writeFile(
-      es6,
-      `${data}export default window.jsonEval;`,
-      (err2) => {
-        if (err2) {
-          console.error(err2);
-        }
-      }
-    );
+    const browserified = buf.toString('utf8');
+    const uglified = uglifyES.minify(browserified);
+
+    if (uglified.error) {
+      throw uglified.error;
+    }
+
+    fs.writeFileSync(bld, uglified.code);
+    fs.writeFileSync(es6, `${uglified.code}export default window.jsonEval;`,);
   });
-
-  if (err) {
-    throw err;
-  }
-
-  /* eslint-disable no-console */
-  if (stderr) {
-    console.error(stderr);
-  }
-});

@@ -7,7 +7,9 @@
     "bundle": "node run/bundle-client.js",
     "devel": "npm run watch & npm run serve",
     "lint": "npx eslint src",
+    "prepush": "npm test",
     "serve": "npx http-server .",
+    "test": "npx mocha test/tests.js",
     "watch": "npx nodemon --watch src -e js --exec 'npm run bundle'"
   },
   "repository": {
@@ -24,9 +26,12 @@
   },
   "devDependencies": {
     "browserify": "^14.4.0",
+    "chai": "4.x",
     "eslint": "3.x",
     "http-server": "^0.11.1",
+    "husky": "^0.14.3",
+    "mocha": "3.x",
     "nodemon": "^1.14.12",
-    "uglify-js": "^3.2.2"
+    "uglify-es": "3.3.9"
   }
 }
