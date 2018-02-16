@@ -6,7 +6,7 @@
   "scripts": {
     "bundle": "node run/bundle-client.js",
     "devel": "npm run watch & npm run serve",
-    "lint": "npx eslint src",
+    "lint": "npx eslint src && npx eslint test",
     "prepush": "npm test",
     "serve": "npx http-server .",
     "test": "npx mocha test/tests.js",
