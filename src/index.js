@@ -297,8 +297,14 @@ function jsonEval(jsonLikeString) {
   return jsObject;
 }
 
-if (typeof window === 'object') {
+if (typeof define === 'function') {
+  define(function () {
+    return jsonEval;
+  });
+}
+else if (typeof window === 'object') {
   window.jsonEval = jsonEval;
 }
-
-module.exports = jsonEval;
+else if (module && module.exports) {
+  module.exports = jsonEval;
+}
