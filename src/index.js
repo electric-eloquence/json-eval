@@ -302,7 +302,8 @@ if (typeof define === 'function') {
     return jsonEval;
   });
 }
-else if (typeof window === 'object') {
+
+if (typeof window === 'object') {
   window.jsonEval = jsonEval;
 }
 else if (module && module.exports) {
