@@ -62,28 +62,28 @@ describe('json-eval', function () {
   );
 
   it('should parse unwrapped keys, containing tildes, with different amounts of spacing', function () {
-      const jsonLike0 = '{d~e:"d\\"~\\""}';
-      const jsonLike1 = "{d~e: 'd\\'~\\''}";
-      const jsonLike2 = '{d~e:  "\\"~\\"e"}';
-      const jsonLike3 = '{d~e:   "d\\"~\\"e"}';
+    const jsonLike0 = '{d~e:"d\\"~\\""}';
+    const jsonLike1 = "{d~e: 'd\\'~\\''}";
+    const jsonLike2 = '{d~e:  "\\"~\\"e"}';
+    const jsonLike3 = '{d~e:   "d\\"~\\"e"}';
 
-      const json0 = jsonEval(jsonLike0);
-      const json1 = jsonEval(jsonLike1);
-      const json2 = jsonEval(jsonLike2);
-      const json3 = jsonEval(jsonLike3);
+    const json0 = jsonEval(jsonLike0);
+    const json1 = jsonEval(jsonLike1);
+    const json2 = jsonEval(jsonLike2);
+    const json3 = jsonEval(jsonLike3);
 
-      expect(JSON.stringify(json0)).to.equal('{"d~e":"d\\"~\\""}');
-      expect(JSON.stringify(json1)).to.equal('{"d~e":"d\'~\'"}');
-      expect(JSON.stringify(json2)).to.equal('{"d~e":"\\"~\\"e"}');
-      expect(JSON.stringify(json3)).to.equal('{"d~e":"d\\"~\\"e"}');
+    expect(JSON.stringify(json0)).to.equal('{"d~e":"d\\"~\\""}');
+    expect(JSON.stringify(json1)).to.equal('{"d~e":"d\'~\'"}');
+    expect(JSON.stringify(json2)).to.equal('{"d~e":"\\"~\\"e"}');
+    expect(JSON.stringify(json3)).to.equal('{"d~e":"d\\"~\\"e"}');
   });
 
   it(
-    // eslint-disable-next-line max-length */
+    // eslint-disable-next-line max-len
     'should parse multiple unwrapped keys, containing backslashes, minus signs and tildes, with different amounts of spacing',
     function () {
       const jsonLike0 = '{a\\?:"\\",",  b-c: ",\\""  ,d~e: ",\\":"}';
-      const jsonLike1 = "{a\\?:'\\',',  b-c: ',\\''  ,d~e: ',\\':'}" ;
+      const jsonLike1 = "{a\\?:'\\',',  b-c: ',\\''  ,d~e: ',\\':'}";
       const jsonLike2 = '{a\\?:"\\":",  b-c: ":\\""  ,d~e: ":\\","}';
       const jsonLike3 = "{a\\?:'\\':',  b-c: ':\\''  ,d~e: ':\\','}";
 
@@ -117,7 +117,7 @@ describe('json-eval', function () {
   });
 
   it(
-    // eslint-disable-next-line max-length */
+    // eslint-disable-next-line max-len
     'should parse multiple wrapped and unwrapped keys, containing colons, backslashes and minus signs, with unwrapped values 1st in the list',
     function () {
       const jsonLike0 = '{"f:g":true, a\\?:"\\",", b-c: ",\\""}';
@@ -138,7 +138,7 @@ describe('json-eval', function () {
   );
 
   it(
-    // eslint-disable-next-line max-length */
+    // eslint-disable-next-line max-len
     'should parse multiple wrapped and unwrapped keys, containing backslashes, colons and minus signs, with unwrapped values midway in the list',
     function () {
       const jsonLike0 = '{a\\?:"\\",", "f:g":true, b-c: ",\\""}';
@@ -159,7 +159,7 @@ describe('json-eval', function () {
   );
 
   it(
-    // eslint-disable-next-line max-length */
+    // eslint-disable-next-line max-len
     'should parse multiple wrapped and unwrapped keys, containing backslashes, colons and minus signs, with unwrapped values last in the list',
     function () {
       const jsonLike0 = '{a\\?:"\\",", b-c: ",\\"", "f:g":true}';
@@ -176,5 +176,6 @@ describe('json-eval', function () {
       expect(JSON.stringify(json1)).to.equal('{"a?":"\',","b-c":",\'","f:g":0}');
       expect(JSON.stringify(json2)).to.equal('{"a?":"\\":","b-c":":\\"","f:g":66}');
       expect(JSON.stringify(json3)).to.equal('{"a?":"\':","b-c":":\'","f:g":0.66}');
-  });
+    }
+  );
 });
