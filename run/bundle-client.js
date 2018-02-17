@@ -26,6 +26,6 @@ browserify(src)
     fs.writeFileSync(bld, uglified.code);
     fs.writeFileSync(
       es6,
-      `${uglified.code}const jsonEval=window.jsonEval;delete window.jsonEval;export default jsonEval;`
+      `${uglified.code}var J=window.jsonEval;delete window.jsonEval;export default J;`
     );
   });
