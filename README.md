@@ -12,6 +12,12 @@ in double-quotes as necessary.
 
 ### Use
 
+CLI:
+
+```bash
+npm install json-eval
+```
+
 Node.js:
 
 ```javascript
