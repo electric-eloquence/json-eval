@@ -1,7 +1,7 @@
 {
   "name": "json-eval",
   "version": "0.2.1",
-  "description": "Evaluate a stringfied JS object into JSON without eval()",
+  "description": "Parse JSON-like strings into valid JS objects without eval",
   "main": "src/index.js",
   "scripts": {
     "bundle": "node run/bundle-client.js",
@@ -16,6 +16,11 @@
     "type": "git",
     "url": "git+https://github.com/electric-eloquence/json-eval.git"
   },
+  "keywords": [
+    "eval",
+    "json",
+    "parse"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/electric-eloquence/json-eval/issues"
