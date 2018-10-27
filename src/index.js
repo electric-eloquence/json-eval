@@ -9,7 +9,7 @@ var JSON5 = require('json5');
  * @param {string} string - the greater string.
  * @param {string} substring - the substring to be searched for.
  * @param {string} replacement - the search replacement.
- * @return {string} JS object.
+ * @returns {string} JS object.
  */
 function replaceSubstringGlobally(string, substring, replacement) {
   var i = 0;
@@ -66,7 +66,7 @@ function replaceSubstringGlobally(string, substring, replacement) {
  *   * Return jsonString.
  *
  * @param {string} jsonLikeString - a JSON-like string.
- * @return {object} JS object.
+ * @returns {object} JS object.
  */
 function jsonEval(jsonLikeString) {
   var colonPos = -1;
