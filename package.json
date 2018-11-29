@@ -38,7 +38,7 @@
     "chai": "4.x",
     "eslint": "3.x",
     "http-server": "^0.11.1",
-    "husky": "^0.14.3",
+    "husky": "^1.2.0",
     "mocha": "3.x",
     "nodemon": "^1.14.12",
     "uglify-es": "3.3.9"
