@@ -5,12 +5,16 @@
   "main": "src/index.js",
   "scripts": {
     "bundle": "node run/bundle-client.js",
-    "devel": "npm run watch & npm run serve",
     "lint": "eslint src && eslint test",
-    "prepush": "npm run lint && npm test",
     "serve": "http-server .",
+    "start": "npm run watch & npm run serve",
     "test": "mocha test/tests.js",
     "watch": "nodemon --watch src -e js --exec 'npm run bundle'"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run lint && npm test"
+    }
   },
   "repository": {
     "type": "git",
