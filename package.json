@@ -6,11 +6,11 @@
   "scripts": {
     "bundle": "node run/bundle-client.js",
     "devel": "npm run watch & npm run serve",
-    "lint": "npx eslint src && npx eslint test",
+    "lint": "eslint src && eslint test",
     "prepush": "npm run lint && npm test",
-    "serve": "npx http-server .",
-    "test": "npx mocha test/tests.js",
-    "watch": "npx nodemon --watch src -e js --exec 'npm run bundle'"
+    "serve": "http-server .",
+    "test": "mocha test/tests.js",
+    "watch": "nodemon --watch src -e js --exec 'npm run bundle'"
   },
   "repository": {
     "type": "git",
