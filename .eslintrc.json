@@ -3,7 +3,6 @@
   "env": {
     "browser": true,
     "es6": true,
-    "mocha": true,
     "node": true
   },
   "parserOptions": {
@@ -13,7 +12,7 @@
     "define": true
   },
   "rules": {
-    // Errors.
+    // error
     "array-bracket-spacing": [2, "never"],
     "block-scoped-var": 2,
     "brace-style": [2, "stroustrup", {"allowSingleLine": true}],
@@ -79,7 +78,7 @@
     "spaced-comment": [2, "always"],
     "strict": 2,
     "yoda": [2, "never"],
-    // Warnings.
+    // warn
     "max-len": [1, 120, 4, {
       "ignoreUrls": true,
       "ignoreComments": false
@@ -89,6 +88,9 @@
     "no-use-before-define": 1,
     "valid-jsdoc": [1, {
       "requireReturn": false
-    }]
+    }],
+    // off
+    "no-duplicate-case": 0,
+    "no-fallthrough": 0
   }
 }
