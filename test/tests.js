@@ -1,5 +1,3 @@
-/* eslint-disable quotes */
-
 'use strict';
 
 const expect = require('chai').expect;
@@ -79,7 +77,6 @@ describe('json-eval', function () {
   });
 
   it(
-    // eslint-disable-next-line max-len
     'should parse multiple unwrapped keys, containing backslashes, minus signs and tildes, with different amounts of spacing',
     function () {
       const jsonLike0 = '{a\\?:"\\",",  b-c: ",\\""  ,d~e: ",\\":"}';
@@ -117,7 +114,6 @@ describe('json-eval', function () {
   });
 
   it(
-    // eslint-disable-next-line max-len
     'should parse multiple wrapped and unwrapped keys, containing colons, backslashes and minus signs, with unwrapped values 1st in the list',
     function () {
       const jsonLike0 = '{"f:g":true, a\\?:"\\",", b-c: ",\\""}';
@@ -138,7 +134,6 @@ describe('json-eval', function () {
   );
 
   it(
-    // eslint-disable-next-line max-len
     'should parse multiple wrapped and unwrapped keys, containing backslashes, colons and minus signs, with unwrapped values midway in the list',
     function () {
       const jsonLike0 = '{a\\?:"\\",", "f:g":true, b-c: ",\\""}';
@@ -159,7 +154,6 @@ describe('json-eval', function () {
   );
 
   it(
-    // eslint-disable-next-line max-len
     'should parse multiple wrapped and unwrapped keys, containing backslashes, colons and minus signs, with unwrapped values last in the list',
     function () {
       const jsonLike0 = '{a\\?:"\\",", b-c: ",\\"", "f:g":true}';
