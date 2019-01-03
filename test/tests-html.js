@@ -1,4 +1,4 @@
-/* eslint-disable quotes, strict */
+/* eslint-disable strict */
 
 var i = 0;
 var jsonLikeStrings = [
