@@ -140,8 +140,9 @@ function jsonEval(jsonLikeString) {
         // If there are no more colons, and we're looking for a key, probably a problem. Stop further processing.
         }
         else {
+          /* istanbul ignore next */
           processString = '';
-
+          /* istanbul ignore next */
           break;
         }
       }
@@ -220,8 +221,9 @@ function jsonEval(jsonLikeString) {
       // If there are no more colons, and we're looking for a value, probably a problem. Stop further processing.
       }
       else {
+        /* istanbul ignore next */
         processString = '';
-
+        /* istanbul ignore next */
         break;
       }
     } while (processString);
@@ -290,6 +292,7 @@ function jsonEval(jsonLikeString) {
       jsObject = JSON5.parse(jsonString);
     }
     catch (err1) {
+      /* istanbul ignore next */
       console.error('\n' + err.message); // eslint-disable-line no-console
     }
   }
@@ -302,7 +305,9 @@ if (typeof define === 'function') {
     return jsonEval;
   });
 }
+/* istanbul ignore next */
 else if (typeof window === 'object') {
+  /* istanbul ignore next */
   window.jsonEval = jsonEval;
 }
 
