@@ -22,7 +22,7 @@ double-quotes as necessary.
 
 CLI:
 
-```bash
+```shell
 npm install json-eval
 ```
 
