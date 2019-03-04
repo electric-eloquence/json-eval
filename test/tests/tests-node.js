@@ -38,8 +38,8 @@ module.exports = function (jsonEval) {
       expect(JSON.stringify(json3)).to.equal('{"b-c":",c"}');
     });
 
-    it('should parse multiple unwrapped keys, containing backslashes and minus signs, with different amounts of \
-spacing', function () {
+    it('should parse multiple unwrapped keys, containing backslashes and minus signs, with different amounts of spacing\
+', function () {
       const jsonLike0 = '{a\\?: "a\\"",b-c  :"b:c"}';
       const jsonLike1 = "{a\\?: 'a\\'', b-c  :'b:c'}";
       const jsonLike2 = '{a\\?: "\\"a" ,b-c  :"b,c"}';
