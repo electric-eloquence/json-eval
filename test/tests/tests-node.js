@@ -38,10 +38,8 @@ module.exports = function (jsonEval) {
       expect(JSON.stringify(json3)).to.equal('{"b-c":",c"}');
     });
 
-    it(
-      'should parse multiple unwrapped keys, containing backslashes and minus signs, with different amounts of spacing',
-      function ()
-    {
+    it('should parse multiple unwrapped keys, containing backslashes and minus signs, with different amounts of \
+spacing', function () {
       const jsonLike0 = '{a\\?: "a\\"",b-c  :"b:c"}';
       const jsonLike1 = "{a\\?: 'a\\'', b-c  :'b:c'}";
       const jsonLike2 = '{a\\?: "\\"a" ,b-c  :"b,c"}';
@@ -75,10 +73,8 @@ module.exports = function (jsonEval) {
       expect(JSON.stringify(json3)).to.equal('{"d~e":"d\\"~\\"e"}');
     });
 
-    it(
-      'should parse multiple unwrapped keys, containing backslashes, minus signs and tildes, with different amounts of spacing',
-      function ()
-    {
+    it('should parse multiple unwrapped keys, containing backslashes, minus signs and tildes, with different amounts \
+of spacing', function () {
       const jsonLike0 = '{a\\?:"\\",",  b-c: ",\\""  ,d~e: ",\\":"}';
       const jsonLike1 = "{a\\?:'\\',',  b-c: ',\\''  ,d~e: ',\\':'}";
       const jsonLike2 = '{a\\?:"\\":",  b-c: ":\\""  ,d~e: ":\\","}';
@@ -112,10 +108,8 @@ module.exports = function (jsonEval) {
       expect(JSON.stringify(json3)).to.equal('{"f+g":0.66}');
     });
 
-    it(
-      'should parse multiple wrapped and unwrapped keys, containing colons, backslashes and minus signs, with unwrapped values 1st in the list',
-      function ()
-    {
+    it('should parse multiple wrapped and unwrapped keys, containing colons, backslashes and minus signs, with \
+unwrapped values 1st in the list', function () {
       const jsonLike0 = '{"f:g":true, a\\?:"\\",", b-c: ",\\""}';
       const jsonLike1 = "{'f:g':0, a\\?:'\\',', b-c: ',\\''}";
       const jsonLike2 = '{"f:g":6.6e+1, a\\?:"\\":", b-c: ":\\""}';
@@ -132,10 +126,8 @@ module.exports = function (jsonEval) {
       expect(JSON.stringify(json3)).to.equal('{"f:g":0.66,"a?":"\':","b-c":":\'"}');
     });
 
-    it(
-      'should parse multiple wrapped and unwrapped keys, containing backslashes, colons and minus signs, with unwrapped values midway in the list',
-      function ()
-    {
+    it('should parse multiple wrapped and unwrapped keys, containing backslashes, colons and minus signs, with \
+unwrapped values midway in the list', function () {
       const jsonLike0 = '{a\\?:"\\",", "f:g":true, b-c: ",\\""}';
       const jsonLike1 = "{a\\?:'\\',', 'f:g':0, b-c: ',\\''}";
       const jsonLike2 = '{a\\?:"\\":", "f:g":6.6e+1, b-c: ":\\""}';
@@ -152,10 +144,8 @@ module.exports = function (jsonEval) {
       expect(JSON.stringify(json3)).to.equal('{"a?":"\':","f:g":0.66,"b-c":":\'"}');
     });
 
-    it(
-      'should parse multiple wrapped and unwrapped keys, containing backslashes, colons and minus signs, with unwrapped values last in the list',
-      function ()
-    {
+    it('should parse multiple wrapped and unwrapped keys, containing backslashes, colons and minus signs, with \
+unwrapped values last in the list', function () {
       const jsonLike0 = '{a\\?:"\\",", b-c: ",\\"", "f:g":true}';
       const jsonLike1 = "{a\\?:'\\',', b-c: ',\\'', 'f:g':0}";
       const jsonLike2 = '{a\\?:"\\":", b-c: ":\\"", "f:g":6.6e+1}';
