@@ -187,6 +187,7 @@ function jsonEval(jsonLikeString) {
             for (i = 0; i < l; i++) {
               // If the value is not wrapped in quotes, check that each following character is an alphanumeric, decimal
               // point, or plus or minus sign for exponential notation.
+              // eslint-disable-next-line no-useless-escape
               if (!/[\w\.\+\-]/.test(processString[i])) {
                 valueStop = i;
 
