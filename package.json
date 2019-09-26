@@ -1,6 +1,6 @@
 {
   "name": "json-eval",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Parse JSON-like strings into valid JS objects without eval",
   "main": "src/index.js",
   "scripts": {
