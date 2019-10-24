@@ -55,10 +55,10 @@ Browser (ES6):
 [snyk-image]: https://snyk.io/test/github/electric-eloquence/json-eval/master/badge.svg
 [snyk-url]: https://snyk.io/test/github/electric-eloquence/json-eval/master
 
-[travis-image]: https://img.shields.io/travis/electric-eloquence/json-eval.svg?label=mac%20%26%20linux
+[travis-image]: https://img.shields.io/travis/electric-eloquence/json-eval/master.svg?label=mac%20%26%20linux
 [travis-url]: https://travis-ci.org/electric-eloquence/json-eval
 
-[appveyor-image]: https://img.shields.io/appveyor/ci/e2tha-e/json-eval.svg?label=windows
+[appveyor-image]: https://img.shields.io/appveyor/ci/e2tha-e/json-eval/master.svg?label=windows
 [appveyor-url]: https://ci.appveyor.com/project/e2tha-e/json-eval
 
 [coveralls-image]: https://img.shields.io/coveralls/electric-eloquence/json-eval/master.svg
