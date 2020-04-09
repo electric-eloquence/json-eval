@@ -2,164 +2,84 @@
 
 const {expect} = require('chai');
 
-module.exports = function (jsonEval) {
-  return function () {
-    it('parses unwrapped keys, containing backslashes', function () {
-      const jsonLike0 = '{a\\?:"\\""}';
-      const jsonLike1 = "{a\\?:'\\''}";
-      const jsonLike2 = '{a\\?:","}';
-      const jsonLike3 = '{a\\?:":"}';
+const subject = require('./subject');
+const expectation = require('./expectation');
 
-      const json0 = jsonEval(jsonLike0);
-      const json1 = jsonEval(jsonLike1);
-      const json2 = jsonEval(jsonLike2);
-      const json3 = jsonEval(jsonLike3);
+// The reason for the hacky scoping of jsonEval is so the end-of-line spacings of these test descriptions and those in
+// subject.js and expectation.js match.
+let jsonEval;
 
-      expect(JSON.stringify(json0)).to.equal('{"a?":"\\""}');
-      expect(JSON.stringify(json1)).to.equal('{"a?":"\'"}');
-      expect(JSON.stringify(json2)).to.equal('{"a?":","}');
-      expect(JSON.stringify(json3)).to.equal('{"a?":":"}');
-    });
+function testsNode() {
+  it('parses unwrapped keys, containing backslashes', function () {
+    expect(JSON.stringify(jsonEval(subject[0]))).to.equal(expectation[0]);
+    expect(JSON.stringify(jsonEval(subject[1]))).to.equal(expectation[1]);
+    expect(JSON.stringify(jsonEval(subject[2]))).to.equal(expectation[2]);
+    expect(JSON.stringify(jsonEval(subject[3]))).to.equal(expectation[3]);
+  });
 
-    it('parses unwrapped keys, containing minus signs', function () {
-      const jsonLike0 = '{b-c :"b:"}';
-      const jsonLike1 = "{b-c :':c'}";
-      const jsonLike2 = '{b-c :"b,"}';
-      const jsonLike3 = "{b-c :',c'}";
+  it('parses unwrapped keys, containing minus signs', function () {
+    expect(JSON.stringify(jsonEval(subject[4]))).to.equal(expectation[4]);
+    expect(JSON.stringify(jsonEval(subject[5]))).to.equal(expectation[5]);
+    expect(JSON.stringify(jsonEval(subject[6]))).to.equal(expectation[6]);
+    expect(JSON.stringify(jsonEval(subject[7]))).to.equal(expectation[7]);
+  });
 
-      const json0 = jsonEval(jsonLike0);
-      const json1 = jsonEval(jsonLike1);
-      const json2 = jsonEval(jsonLike2);
-      const json3 = jsonEval(jsonLike3);
-
-      expect(JSON.stringify(json0)).to.equal('{"b-c":"b:"}');
-      expect(JSON.stringify(json1)).to.equal('{"b-c":":c"}');
-      expect(JSON.stringify(json2)).to.equal('{"b-c":"b,"}');
-      expect(JSON.stringify(json3)).to.equal('{"b-c":",c"}');
-    });
-
-    it('parses multiple unwrapped keys, containing backslashes and minus signs, with different amounts of spacing\
+  it('parses multiple unwrapped keys, containing backslashes and minus signs, with different amounts of spacing\
 ', function () {
-      const jsonLike0 = '{a\\?: "a\\"",b-c  :"b:c"}';
-      const jsonLike1 = "{a\\?: 'a\\'', b-c  :'b:c'}";
-      const jsonLike2 = '{a\\?: "\\"a" ,b-c  :"b,c"}';
-      const jsonLike3 = '{a\\?: ",:" ,b-c  :":,"}';
+    expect(JSON.stringify(jsonEval(subject[8]))).to.equal(expectation[8]);
+    expect(JSON.stringify(jsonEval(subject[9]))).to.equal(expectation[9]);
+    expect(JSON.stringify(jsonEval(subject[10]))).to.equal(expectation[10]);
+    expect(JSON.stringify(jsonEval(subject[11]))).to.equal(expectation[11]);
+  });
 
-      const json0 = jsonEval(jsonLike0);
-      const json1 = jsonEval(jsonLike1);
-      const json2 = jsonEval(jsonLike2);
-      const json3 = jsonEval(jsonLike3);
+  it('parses unwrapped keys, containing tildes, with different amounts of spacing', function () {
+    expect(JSON.stringify(jsonEval(subject[12]))).to.equal(expectation[12]);
+    expect(JSON.stringify(jsonEval(subject[13]))).to.equal(expectation[13]);
+    expect(JSON.stringify(jsonEval(subject[14]))).to.equal(expectation[14]);
+    expect(JSON.stringify(jsonEval(subject[15]))).to.equal(expectation[15]);
+  });
 
-      expect(JSON.stringify(json0)).to.equal('{"a?":"a\\"","b-c":"b:c"}');
-      expect(JSON.stringify(json1)).to.equal('{"a?":"a\'","b-c":"b:c"}');
-      expect(JSON.stringify(json2)).to.equal('{"a?":"\\"a","b-c":"b,c"}');
-      expect(JSON.stringify(json3)).to.equal('{"a?":",:","b-c":":,"}');
-    });
-
-    it('parses unwrapped keys, containing tildes, with different amounts of spacing', function () {
-      const jsonLike0 = '{d~e:"d\\"~\\""}';
-      const jsonLike1 = "{d~e: 'd\\'~\\''}";
-      const jsonLike2 = '{d~e:  "\\"~\\"e"}';
-      const jsonLike3 = '{d~e:   "d\\"~\\"e"}';
-
-      const json0 = jsonEval(jsonLike0);
-      const json1 = jsonEval(jsonLike1);
-      const json2 = jsonEval(jsonLike2);
-      const json3 = jsonEval(jsonLike3);
-
-      expect(JSON.stringify(json0)).to.equal('{"d~e":"d\\"~\\""}');
-      expect(JSON.stringify(json1)).to.equal('{"d~e":"d\'~\'"}');
-      expect(JSON.stringify(json2)).to.equal('{"d~e":"\\"~\\"e"}');
-      expect(JSON.stringify(json3)).to.equal('{"d~e":"d\\"~\\"e"}');
-    });
-
-    it('parses multiple unwrapped keys, containing backslashes, minus signs and tildes, with different amounts of \
+  it('parses multiple unwrapped keys, containing backslashes, minus signs and tildes, with different amounts of \
 spacing', function () {
-      const jsonLike0 = '{a\\?:"\\",",  b-c: ",\\""  ,d~e: ",\\":"}';
-      const jsonLike1 = "{a\\?:'\\',',  b-c: ',\\''  ,d~e: ',\\':'}";
-      const jsonLike2 = '{a\\?:"\\":",  b-c: ":\\""  ,d~e: ":\\","}';
-      const jsonLike3 = "{a\\?:'\\':',  b-c: ':\\''  ,d~e: ':\\','}";
+    expect(JSON.stringify(jsonEval(subject[16]))).to.equal(expectation[16]);
+    expect(JSON.stringify(jsonEval(subject[17]))).to.equal(expectation[17]);
+    expect(JSON.stringify(jsonEval(subject[18]))).to.equal(expectation[18]);
+    expect(JSON.stringify(jsonEval(subject[19]))).to.equal(expectation[19]);
+  });
 
-      const json0 = jsonEval(jsonLike0);
-      const json1 = jsonEval(jsonLike1);
-      const json2 = jsonEval(jsonLike2);
-      const json3 = jsonEval(jsonLike3);
+  it('parses unwrapped keys, containing plus signs, with unwrapped values', function () {
+    expect(JSON.stringify(jsonEval(subject[20]))).to.equal(expectation[20]);
+    expect(JSON.stringify(jsonEval(subject[21]))).to.equal(expectation[21]);
+    expect(JSON.stringify(jsonEval(subject[22]))).to.equal(expectation[22]);
+    expect(JSON.stringify(jsonEval(subject[23]))).to.equal(expectation[23]);
+  });
 
-      expect(JSON.stringify(json0)).to.equal('{"a?":"\\",","b-c":",\\"","d~e":",\\":"}');
-      expect(JSON.stringify(json1)).to.equal('{"a?":"\',","b-c":",\'","d~e":",\':"}');
-      expect(JSON.stringify(json2)).to.equal('{"a?":"\\":","b-c":":\\"","d~e":":\\","}');
-      expect(JSON.stringify(json3)).to.equal('{"a?":"\':","b-c":":\'","d~e":":\',"}');
-    });
+  it('parses multiple wrapped and unwrapped keys, containing colons, backslashes and minus signs, with unwrapped values\
+ 1st in the list', function () {
+    expect(JSON.stringify(jsonEval(subject[24]))).to.equal(expectation[24]);
+    expect(JSON.stringify(jsonEval(subject[25]))).to.equal(expectation[25]);
+    expect(JSON.stringify(jsonEval(subject[26]))).to.equal(expectation[26]);
+    expect(JSON.stringify(jsonEval(subject[27]))).to.equal(expectation[27]);
+  });
 
-    it('parses unwrapped keys, containing plus signs, with unwrapped values', function () {
-      const jsonLike0 = '{f+g:true}';
-      const jsonLike1 = '{f+g:0}';
-      const jsonLike2 = '{f+g:6.6e+1}';
-      const jsonLike3 = '{f+g:6.6e-1}';
+  it('parses multiple wrapped and unwrapped keys, containing backslashes, colons and minus signs, with unwrapped values\
+ midway in the list', function () {
+    expect(JSON.stringify(jsonEval(subject[28]))).to.equal(expectation[28]);
+    expect(JSON.stringify(jsonEval(subject[29]))).to.equal(expectation[29]);
+    expect(JSON.stringify(jsonEval(subject[30]))).to.equal(expectation[30]);
+    expect(JSON.stringify(jsonEval(subject[31]))).to.equal(expectation[31]);
+  });
 
-      const json0 = jsonEval(jsonLike0);
-      const json1 = jsonEval(jsonLike1);
-      const json2 = jsonEval(jsonLike2);
-      const json3 = jsonEval(jsonLike3);
+  it('parses multiple wrapped and unwrapped keys, containing backslashes, colons and minus signs, with unwrapped values\
+ last in the list', function () {
+    expect(JSON.stringify(jsonEval(subject[32]))).to.equal(expectation[32]);
+    expect(JSON.stringify(jsonEval(subject[33]))).to.equal(expectation[33]);
+    expect(JSON.stringify(jsonEval(subject[34]))).to.equal(expectation[34]);
+    expect(JSON.stringify(jsonEval(subject[35]))).to.equal(expectation[35]);
+  });
+};
 
-      expect(JSON.stringify(json0)).to.equal('{"f+g":true}');
-      expect(JSON.stringify(json1)).to.equal('{"f+g":0}');
-      expect(JSON.stringify(json2)).to.equal('{"f+g":66}');
-      expect(JSON.stringify(json3)).to.equal('{"f+g":0.66}');
-    });
-
-    it('parses multiple wrapped and unwrapped keys, containing colons, backslashes and minus signs, with unwrapped \
-values 1st in the list', function () {
-      const jsonLike0 = '{"f:g":true, a\\?:"\\",", b-c: ",\\""}';
-      const jsonLike1 = "{'f:g':0, a\\?:'\\',', b-c: ',\\''}";
-      const jsonLike2 = '{"f:g":6.6e+1, a\\?:"\\":", b-c: ":\\""}';
-      const jsonLike3 = "{'f:g':6.6e-1, a\\?:'\\':', b-c: ':\\''}";
-
-      const json0 = jsonEval(jsonLike0);
-      const json1 = jsonEval(jsonLike1);
-      const json2 = jsonEval(jsonLike2);
-      const json3 = jsonEval(jsonLike3);
-
-      expect(JSON.stringify(json0)).to.equal('{"f:g":true,"a?":"\\",","b-c":",\\""}');
-      expect(JSON.stringify(json1)).to.equal('{"f:g":0,"a?":"\',","b-c":",\'"}');
-      expect(JSON.stringify(json2)).to.equal('{"f:g":66,"a?":"\\":","b-c":":\\""}');
-      expect(JSON.stringify(json3)).to.equal('{"f:g":0.66,"a?":"\':","b-c":":\'"}');
-    });
-
-    it('parses multiple wrapped and unwrapped keys, containing backslashes, colons and minus signs, with unwrapped \
-values midway in the list', function () {
-      const jsonLike0 = '{a\\?:"\\",", "f:g":true, b-c: ",\\""}';
-      const jsonLike1 = "{a\\?:'\\',', 'f:g':0, b-c: ',\\''}";
-      const jsonLike2 = '{a\\?:"\\":", "f:g":6.6e+1, b-c: ":\\""}';
-      const jsonLike3 = "{a\\?:'\\':', 'f:g':6.6e-1, b-c: ':\\''}";
-
-      const json0 = jsonEval(jsonLike0);
-      const json1 = jsonEval(jsonLike1);
-      const json2 = jsonEval(jsonLike2);
-      const json3 = jsonEval(jsonLike3);
-
-      expect(JSON.stringify(json0)).to.equal('{"a?":"\\",","f:g":true,"b-c":",\\""}');
-      expect(JSON.stringify(json1)).to.equal('{"a?":"\',","f:g":0,"b-c":",\'"}');
-      expect(JSON.stringify(json2)).to.equal('{"a?":"\\":","f:g":66,"b-c":":\\""}');
-      expect(JSON.stringify(json3)).to.equal('{"a?":"\':","f:g":0.66,"b-c":":\'"}');
-    });
-
-    it('parses multiple wrapped and unwrapped keys, containing backslashes, colons and minus signs, with unwrapped \
-values last in the list', function () {
-      const jsonLike0 = '{a\\?:"\\",", b-c: ",\\"", "f:g":true}';
-      const jsonLike1 = "{a\\?:'\\',', b-c: ',\\'', 'f:g':0}";
-      const jsonLike2 = '{a\\?:"\\":", b-c: ":\\"", "f:g":6.6e+1}';
-      const jsonLike3 = "{a\\?:'\\':', b-c: ':\\'', 'f:g':6.6e-1}";
-
-      const json0 = jsonEval(jsonLike0);
-      const json1 = jsonEval(jsonLike1);
-      const json2 = jsonEval(jsonLike2);
-      const json3 = jsonEval(jsonLike3);
-
-      expect(JSON.stringify(json0)).to.equal('{"a?":"\\",","b-c":",\\"","f:g":true}');
-      expect(JSON.stringify(json1)).to.equal('{"a?":"\',","b-c":",\'","f:g":0}');
-      expect(JSON.stringify(json2)).to.equal('{"a?":"\\":","b-c":":\\"","f:g":66}');
-      expect(JSON.stringify(json3)).to.equal('{"a?":"\':","b-c":":\'","f:g":0.66}');
-    });
-  };
+module.exports = function (jsonEval_) {
+  jsonEval = jsonEval_;
+  return testsNode;
 };
