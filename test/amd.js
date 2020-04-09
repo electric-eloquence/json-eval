@@ -9,7 +9,7 @@ global.define = function () {
 require('../src/index');
 
 const jsonEval = defineArgs[0]();
-const tests = require('./tests/tests-node');
+const tests = require('./tests/node');
 
 describe('json-eval', function () {
   describe('via AMD', tests(jsonEval));

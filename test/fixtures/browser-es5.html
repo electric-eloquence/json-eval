@@ -1,13 +1,12 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <script type="module">
-      import jsonEval from '../dist/json-eval.es6.min.js';
-      window.jsonEval = jsonEval;
-    </script>
+    <script src="../../dist/json-eval.min.js"></script>
+    <script src="../tests/subject.js"></script>
+    <script src="../tests/expectation.js"></script>
   </head>
   <body style="font-family: Monaco, 'Lucida Console', 'DejaVu Sans Mono', 'Roboto Mono', monospace; font-size: 13px;">
     <main id="main"></main>
-    <script src="tests/tests-browser.js" type="module"></script>
+    <script src="./browser.js" defer></script>
   </body>
 </html>

@@ -77,7 +77,7 @@ spacing', function () {
     expect(JSON.stringify(jsonEval(subject[34]))).to.equal(expectation[34]);
     expect(JSON.stringify(jsonEval(subject[35]))).to.equal(expectation[35]);
   });
-};
+}
 
 module.exports = function (jsonEval_) {
   jsonEval = jsonEval_;
