@@ -7,11 +7,12 @@
     "bundle": "node run/bundle-client.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint src && eslint test",
-    "server": "node run/serve",
+    "mocha": "nyc mocha test/{amd,main}.js",
+    "serve": "node run/serve",
     "start": "npm run watch && npm run serve",
-    "test": "nyc mocha test/*.js",
+    "test": "npm run mocha && npm run wdio",
     "watch": "nodemon --watch src -e js --exec 'npm run bundle'",
-    "wdio": "node test/wdio-es5 && node test/wdio-es6"
+    "wdio": "node test/wdio-es5 && node test/wdio-es6.js"
   },
   "husky": {
     "hooks": {

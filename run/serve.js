@@ -16,14 +16,16 @@ process.env.PORT = port;
 
 module.exports = new Promise((resolve) => {
   const server = http.createServer((req, res) => {
-    const urlObj = url.parse(req.url, true);
-    const filePath = `${__dirname}/..${urlObj.pathname}`;
+    const filePath = `${__dirname}/..${req.url}`;
     const extname = path.extname(filePath);
     let contentType = 'application/octet-stream';
 
     switch (extname) {
       case '.html':
         contentType = 'text/html';
+        break;
+      case '.ico':
+        contentType = 'image/x-icon';
         break;
       case '.js':
         contentType = 'application/javascript';
