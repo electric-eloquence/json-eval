@@ -27,6 +27,8 @@ jobs:
 
       - name: Build
         run: |
+          brew update-reset
+          brew cask install google-chrome
           npm ci
           npm run lint
           npm test
