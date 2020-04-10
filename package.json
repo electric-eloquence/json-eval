@@ -6,7 +6,7 @@
   "scripts": {
     "bundle": "node run/bundle-client.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "lint": "eslint src && eslint test",
+    "lint": "eslint run && eslint src && eslint test",
     "serve": "node run/serve",
     "start": "npm run watch && npm run serve",
     "test": "nyc mocha test/{amd,main}.js",
