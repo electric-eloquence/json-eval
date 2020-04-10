@@ -7,10 +7,9 @@
     "bundle": "node run/bundle-client.js",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "lint": "eslint src && eslint test",
-    "mocha": "nyc mocha test/{amd,main}.js",
     "serve": "node run/serve",
     "start": "npm run watch && npm run serve",
-    "test": "npm run mocha && npm run wdio",
+    "test": "nyc mocha test/{amd,main}.js",
     "watch": "nodemon --watch src -e js --exec 'npm run bundle'",
     "wdio": "node test/wdio-es5 && node test/wdio-es6.js"
   },
