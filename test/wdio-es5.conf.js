@@ -1,4 +1,4 @@
-/* eslint-disable strict */
+'use strict';
 
 exports.config = {
   //
