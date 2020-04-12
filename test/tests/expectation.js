@@ -1,6 +1,6 @@
 'use strict';
 
-modules.exports = [
+module.exports = [
   // parses unwrapped keys, containing backslashes
   '{"a?":"\\""}',
   '{"a?":"\'"}',
