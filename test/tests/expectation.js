@@ -1,6 +1,6 @@
-/* eslint-disable strict */
+'use strict';
 
-var expectation = [
+modules.exports = [
   // parses unwrapped keys, containing backslashes
   '{"a?":"\\""}',
   '{"a?":"\'"}',
@@ -50,10 +50,3 @@ var expectation = [
   '{"a?":"\\":","b-c":":\\"","f:g":66}',
   '{"a?":"\':","b-c":":\'","f:g":0.66}'
 ];
-
-if (typeof global === 'object' && typeof module === 'object' && typeof module.exports === 'object') {
-  module.exports = expectation;
-}
-else if (typeof window === 'object') {
-  window.expectation = expectation;
-}
