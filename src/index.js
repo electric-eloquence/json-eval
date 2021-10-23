@@ -301,14 +301,13 @@ function jsonEval(jsonLikeString) {
   return jsObject;
 }
 
+/* istanbul ignore else */
 if (typeof define === 'function') {
   define(function () {
     return jsonEval;
   });
 }
-/* istanbul ignore next */
 else if (typeof window === 'object') {
-  /* istanbul ignore next */
   window.jsonEval = jsonEval;
 }
 
