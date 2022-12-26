@@ -34,7 +34,7 @@
   },
   "homepage": "https://github.com/electric-eloquence/json-eval#readme",
   "dependencies": {
-    "json5": "0.5.1"
+    "json5": "2.2.2"
   },
   "devDependencies": {
     "@wdio/cli": "7.16.9",
